@@ -50,6 +50,13 @@ export class EuiAccordion extends Component {
     this.setChildContentHeight();
   }
 
+  componentWillUnmount() {
+    if (this.observer) {
+      this.observer.disconnect();
+      this.observer = null;
+    }
+  }
+
   onToggle() {
     this.setState(prevState => ({
       isOpen: !prevState.isOpen
